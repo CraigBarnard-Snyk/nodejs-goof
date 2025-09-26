@@ -43,3 +43,10 @@ router.post('/', async (req, res, next) => {
     next();
   }
 })
+
+
+router.get('/xss', (req, res) => {
+  const name = req.query.name || 'world';
+  // Vulnerable: unsanitized user input is rendered directly in HTML document
+  res.send(`<h1>Hello ${name}</h1>`);
+});
