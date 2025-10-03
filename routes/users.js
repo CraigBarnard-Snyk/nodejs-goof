@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
 
   // hard-coded getting account id of 1
   // as a rpelacement to getting this from the session and such
-  // (just imagine that we implemented auth, etc)d
+  // (just imagine that we implemented auth, etc)
   const results = await repo.find({ id: 1 })
 
   // Log Object's where property for debug reasons:
