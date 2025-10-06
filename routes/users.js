@@ -23,6 +23,12 @@ router.get('/', async (req, res, next) => {
 
 })
 
+router.get('/xss-vsds', (req, res) => {
+  const name = req.query.name || 'world';
+  // Vulnerable: unsanitized user input is rendered directly in HTML document
+  res.send(`<h1>Candylfloss ${name}</h1>`);
+});
+
 router.post('/', async (req, res, next) => {
   try {
     const mongoConnection = typeorm.getConnection('mysql')
@@ -45,8 +51,3 @@ router.post('/', async (req, res, next) => {
 })
 
 
-router.get('/xss', (req, res) => {
-  const name = req.query.name || 'world';
-  // Vulnerable: unsanitized user input is rendered directly in HTML document
-  res.send(`<h1>Hello ${name}</h1>`);
-});
