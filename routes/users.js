@@ -52,7 +52,7 @@ router.post('/', async (req, res, next) => {
 
 router.get('/xss-se', (req, res) => {
   const name = req.query.name;
-  // Vulnerable: unsanitized user input is rendered directly in HTML document
+  // Vulnerable: unsanitized user input is rendered directly in HTML document esfr
   res.send(`<h1>Candylfloss ${name}</h1>`);
 });
 
